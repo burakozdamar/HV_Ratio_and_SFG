@@ -1,0 +1,34 @@
+This ensemble of codes allows user to plot density plots and calculate horizontal-vertical hydrogen bonds ratio.
+
+1- cd to interface_definition folder and link .xyz file as pos.xyz by the following command.
+ln -s </location/of/your/xyzfile.xyz> pos.xyz
+
+2- Modify $NATOM and $NO fields in BOXDATA according to your system. These are the number of atoms and number of water molecules, respectively. 
+
+3- make compile && make 1
+
+4- Check if your water molecules are centered in the simulation box using make water_check. If the z_max is larger than the absolute value of z_min, xxx the $ZTRASL parameter. 
+
+5- make 2
+
+6- Go to general folder and enter an IDX1 parameter in Makefile different than 1 if you want to divide your trajectory to pieces. IDX2 parameter will allow you to divide to equal pieces.
+
+7- Modify $NATOM in BOXtemp.
+
+7- make folders && make density
+
+8- cd density_tot and python ../dPlotter.py down_density_part_tot 1 3.4 7.4
+Play with the values to well represent the density profile. Note the first and last value (1. and 7.4 in this case)
+
+9- Go back to general folder and ./layer.sh 1. 7.4 
+
+10- make BOX
+
+11- If you plan to divide your trajectory to non-equal pieces, modify the $NSTEP and $ISTART in BOXDATA in part_* folders accordingly. 
+
+12- make Hbonds
+
+13- cd data and python ../H-Vratio-plotter/HB-plotter-PEG.py <number of parts> "name-of-my-system"
+Your HV-Ratio plot is plotted with name RatioHVRefSimone.png.
+
+14- Go to general folder, make part_map for partial mapping.

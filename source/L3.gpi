@@ -1,0 +1,27 @@
+set terminal postscript enhanced color solid "Helvetica,20"
+#set terminal postscript enhanced  solid
+
+set grid
+
+set ticslevel 0
+
+set dgrid3d 23,50
+#set hidden3d
+#set pm3d at b
+set pm3d 
+#set palette defined (-3 "blue", 0 "white", 1 "red")
+set palette rgbformulae 33,13,10
+
+
+k=100
+
+#set view 30,120 
+set view 0,0 
+
+unset zlabel
+unset  ztics
+
+set cbrange[0.02:0.04]
+
+splot\
+'2D_plot_HBDONOR_network_tot_dL3' u 1:2:($3*k) w l lt 1 lw 1.5 t 'L3' 
