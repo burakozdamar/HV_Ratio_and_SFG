@@ -47,3 +47,9 @@ clean:
 	rm -fr interface_definition/pos_rebuilt_solid.xyz
 	rm -fr interface_definition/*.dat
 	rm -fr interface_definition/interface.xyz
+
+layer_old:
+	$(foreach num, $(IDX1), $(shell cd part_$(num)/.; ../up_down_water_layers.x 4 >> out.log; ../down_HBDONOR_network.x >> out.log; ../down_hbond.x >> out.log ; ../make_2D_graph_for_HB_network.x HBDONOR_network_tot_dL0 2D_plot_HBDONOR_network_tot_dL0 >> out.log ; ../make_2D_graph_for_HB_network.x HBDONOR_network_tot_dL1 2D_plot_HBDONOR_network_tot_dL1 >> out.log; ../make_2D_graph_for_HB_network.x HBDONOR_network_tot_dL2 2D_plot_HBDONOR_network_tot_dL2 >> out.log; ../make_2D_graph_for_HB_network.x HBDONOR_network_tot_dL3 2D_plot_HBDONOR_network_tot_dL3 >> out.log;))
+
+plot_old:
+	$(foreach num, $(IDX1), $(shell cd part_$(num)/.; gnuplot L0.gpi > 2D_plot_HBDONOR_network_tot_dL0.ps; gnuplot L1.gpi > 2D_plot_HBDONOR_network_tot_dL1.ps; gnuplot L2.gpi > 2D_plot_HBDONOR_network_tot_dL2.ps; gnuplot L3.gpi > 2D_plot_HBDONOR_network_tot_dL3.ps;))
