@@ -5,7 +5,7 @@ ln -s </location/of/your/xyzfile.xyz> pos.xyz
 
 2- Modify $NATOM and $NO fields in BOXDATA according to your system. These are the number of atoms and number of water molecules, respectively. 
 
-3- make compile && make 1
+3- make compile && make 1 (or make start)
 
 4- Check if your water molecules are centered in the simulation box using make water_check. If the z_max is larger than the absolute value of z_min, xxx the $ZTRASL parameter. 
 
